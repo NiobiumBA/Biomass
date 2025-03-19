@@ -1,0 +1,31 @@
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+//RWTexture2D<float4> Result;
+#pragma kernel DepthCompute
+#pragma multi_compile MANDELBROT JULIA MENGER
+
+#define COMPUTESHADER
+#include "RayMarchingUtils.hlsl"
+
+RWTexture2D<float> _RayMarchingDepth;
+int _Width;
+int _Height;
+float4 _CameraPos;
+
+void CalculateDepth(uint2 id)
+{
+	float2 viewPort = 2.0f * (id.xy + 0.5f) / float2(_Width, _Height) - 1.0f;
+	
+	float3 dir = normalize(GetViewDir(viewPort, _CameraPos.xyz));
+	
+	float depth;
+	bool hit = RayMarch(_CameraPos.xyz, dir, depth);
+	
+	_RayMarchingDepth[id.xy] = hit ? depth : -1.0f;
+}
+
+[numthreads(32, 16, 1)]
+void DepthCompute (uint3 id : SV_DispatchThreadID)
+{
+	CalculateDepth(id.xy);
+}

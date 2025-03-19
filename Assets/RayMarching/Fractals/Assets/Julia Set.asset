@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5024bd473126534aa0ff26e4bcec793, type: 3}
+  m_Name: Julia Set
+  m_EditorClassIdentifier: 
+  m_scale: 200
+  m_iterations: 30
+  m_power: 5
+  m_additiveConstant:
+    m_radius: 0.8
+    m_firstAngle: 1.61
+    m_secondAngle: 2.56
+  m_colorDifference: 0.076
+  m_firstColor: {r: 0, g: 1, b: 0.3375001, a: 1}
+  m_secondColor: {r: 1, g: 0.7687074, b: 0, a: 1}

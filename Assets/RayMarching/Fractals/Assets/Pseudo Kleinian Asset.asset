@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0861c9341781443b5b2a8a2fb26e80, type: 3}
+  m_Name: Pseudo Kleinian Asset
+  m_EditorClassIdentifier: 
+  m_scale: 125
+  m_iterations: 17
+  m_cSize: {x: 1, y: 1, z: 1.3}
+  m_size: 2.5
+  m_c: {x: -0.62, y: -0.015, z: -0.025}
+  m_colorDifference: 1
+  m_firstColor: {r: 0.5849056, g: 0.14070842, b: 0.14070842, a: 0}
+  m_secondColor: {r: 0, g: 1, b: 0.34345722, a: 0}

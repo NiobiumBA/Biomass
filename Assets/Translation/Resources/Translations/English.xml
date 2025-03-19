@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<translation>
+	<mainMenu>
+		<selectFractal>Select fractal</selectFractal>
+		<settings>Settings</settings>
+		<quit>Quit</quit>
+	</mainMenu>
+	<fractalSelection>
+		<back>Back</back>
+	</fractalSelection>
+	<gameMenu>
+		<newFractal>New fractal</newFractal>
+		<continue>Continue</continue>
+		<mainMenu>Main menu</mainMenu>
+	</gameMenu>
+	<settings>
+		<apply>Apply</apply>
+		<close>Close</close>
+		<graphics>
+			<name>Graphics</name>
+			<depthResolution>Depth map resolution</depthResolution>
+			<shadowsEnable>Shadows enable</shadowsEnable>
+			<shadowsResolution>Shadows map resolution</shadowsResolution>
+		</graphics>
+		<controls>
+			<name>Controls</name>
+			<sensitivity>Sensitivity</sensitivity>
+		</controls>
+		<misc>
+			<name>Misc</name>
+			<language>Language</language>
+		</misc>
+	</settings>
+</translation>

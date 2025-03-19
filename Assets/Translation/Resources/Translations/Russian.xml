@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<translation>
+	<mainMenu>
+		<selectFractal>Выбрать фрактал</selectFractal>
+		<settings>Настройки</settings>
+		<quit>выход</quit>
+	</mainMenu>
+	<gameMenu>
+		<newFractal>Новый фрактал</newFractal>
+		<continue>Продолжить</continue>
+	</gameMenu>
+	<settings>
+		<apply>Применить</apply>
+		<close>Закрыть</close>
+		<graphics>
+			<name>Графика</name>
+			<depthResolution>Разрешение глубины</depthResolution>
+			<shadowsEnable>Тени</shadowsEnable>
+			<shadowsResolution>Разрешение теней</shadowsResolution>
+		</graphics>
+		<controls>
+			<name>Управление</name>
+			<sensitivity>Чувствительность</sensitivity>
+		</controls>
+		<misc>
+			<name>Прочее</name>
+			<language>Язык</language>
+		</misc>
+	</settings>
+</translation>

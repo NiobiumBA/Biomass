@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0861c9341781443b5b2a8a2fb26e80, type: 3}
+  m_Name: Selection Kleinian
+  m_EditorClassIdentifier: 
+  m_scale: 1
+  m_iterations: 20
+  m_cSize: {x: 0.87, y: 0.5, z: 0.19}
+  m_size: 0.54
+  m_c: {x: 0.47, y: -0.37, z: -0.42}
+  m_colorDifference: 1
+  m_firstColor: {r: 1, g: 0, b: 0, a: 0}
+  m_secondColor: {r: 0, g: 1, b: 0.23381615, a: 0}

@@ -1,0 +1,67 @@
+#pragma kernel ShadowsCompute
+
+#pragma multi_compile _ MANDELBROT JULIASET MENGERSPHERE PSEUDOKLEINIAN
+#pragma multi_compile _ SCALEFRACTAL
+
+#include "RayMarchingUtils.hlsl"
+#include "ShadowsUtils.hlsl"
+
+// input
+Texture2D<float> _RMDepth;
+float4 _RMDepthSize;
+float4 _RMShadowsSize;
+float4 _CameraPos;
+float4 _LightDir;
+float _LightSize;
+int _FrameModule;
+
+// input - output
+RWTexture2D<float> _RMShadows;
+
+
+uint2 TemporalOffset(uint2 id, uint size, uint2 i)
+{
+	return size * id + i;
+}
+
+void ComputeShadowForID(uint2 id)
+{
+	float2 viewPort = 2 * (id + 0.5f) / _RMShadowsSize.xy - 1;
+	
+    float3 viewDir = normalize(GetViewDir(viewPort, _CameraPos.xyz));
+	
+	float depth = _RMDepth[round(id / _RMShadowsSize.xy * _RMDepthSize.xy)];
+	
+	float3 worldPos = _CameraPos.xyz + viewDir * depth;
+	
+	float shadow = 0.0f;
+	
+	if (DepthIsHit(depth))
+	{
+		shadow = RayMarchingSoftShadow(worldPos, _LightDir.xyz, 2 * depth * _RMFactorMinDist, _LightSize);
+	}
+	
+    _RMShadows[id] = shadow;
+}
+
+[numthreads(8, 8, 1)]
+void ShadowsCompute(uint3 id : SV_DispatchThreadID)
+{
+	//ComputeShadowForID(id.xy);
+	
+	ComputeShadowForID(TemporalOffset(id.xy, 2, uint2(0, _FrameModule)));
+	ComputeShadowForID(TemporalOffset(id.xy, 2, uint2(1, 1 - _FrameModule)));
+	
+	// _RMShadows[TemporalOffset(id.xy, 2, uint2(0,     _FrameModule))] = _FrameModule;
+	// _RMShadows[TemporalOffset(id.xy, 2, uint2(1, 1 - _FrameModule))] = _FrameModule;
+	
+	// ComputeShadowForID(TemporalOffset(id.xy, 2, uint2(0, 0)));
+	// ComputeShadowForID(TemporalOffset(id.xy, 2, uint2(0, 1)));
+	// ComputeShadowForID(TemporalOffset(id.xy, 2, uint2(1, 0)));
+	// ComputeShadowForID(TemporalOffset(id.xy, 2, uint2(1, 1)));
+	
+	// _RMShadows[TemporalOffset(id.xy, 2, uint2(0, 0))] = 1;
+	// _RMShadows[TemporalOffset(id.xy, 2, uint2(0, 1))] = 0;
+	// _RMShadows[TemporalOffset(id.xy, 2, uint2(1, 0))] = 0;
+	// _RMShadows[TemporalOffset(id.xy, 2, uint2(1, 1))] = 1;
+}
